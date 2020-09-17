@@ -16,6 +16,9 @@
     <Filter Include="Source Files\graphics">
       <UniqueIdentifier>{c774f5f2-adbe-4541-85f7-6c4a5a940f40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\objects">
+      <UniqueIdentifier>{9bdd2e48-e798-4034-9cc8-419a94603cbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,6 +27,9 @@
     <ClCompile Include="window.cpp">
       <Filter>Source Files\graphics</Filter>
     </ClCompile>
+    <ClCompile Include="basicShapes.cpp">
+      <Filter>Source Files\objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -31,6 +37,9 @@
     </ClInclude>
     <ClInclude Include="render.h">
       <Filter>Source Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="basicShapes.h">
+      <Filter>Source Files\objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -26,9 +26,11 @@ namespace sushiEngine {
 
 			if (!glfwInit()) {
 				printf("Failed to initialize GLFW...\n\n");
+				glfwTerminate();
+				return false;
 			}
 			else {
-				printf("GLFW has been initialized.\n\n");
+				printf("GLFW has been initialized.\n");
 			}
 
 			m_Window = glfwCreateWindow(m_width, m_hieght, m_name, NULL, NULL);
@@ -39,6 +41,14 @@ namespace sushiEngine {
 			}
 			glfwMakeContextCurrent(m_Window);
 			// [STRIPPED CODE] glfwSetWindowSizeCallback(m_Window, resize); - Causes build errors, will need to be implemented eventually
+
+			if (glewInit() != GLEW_OK) {
+				printf("Failed to initialize GLEW...\n\n");
+				return false;
+			}
+			else {
+				printf("GLEW has been initialized.\n\n");
+			}
 			return true;
 		}
 

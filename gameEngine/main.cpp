@@ -1,17 +1,10 @@
 #include <stdlib.h>
 
 #include "window.h"
+#include "basicShapes.h"
 
 // Namespace for testing functions that have not been put into its class yet
 namespace mainFunctions {
-	// Simple triangle renderer
-	void renderTriangle(float offsetX, float offsetY) {
-		glBegin(GL_TRIANGLES);
-		glVertex2f(-0.5f + offsetX, -0.5f + offsetY);
-		glVertex2f( 0.0f + offsetX,  0.5f + offsetY);
-		glVertex2f( 0.5f + offsetX, -0.5f + offsetY);
-		glEnd();
-	}
 	void dormantFunction() {} // Placeholder function representing actions when the core game engine shuts down
 }
 
@@ -19,14 +12,21 @@ int main() {
 	printf("Sushi Game engine Start:\n\n");
 	
 	// Inits the window, and sets the initial resoulution
-	sushiEngine::graphics::Window window("Sushi Engine", 800, 600);
+	sushiEngine::graphics::Window window("Translating Square Example - Sushi Engine", 800, 600);
+
+	// Creates a square object
+	sushiEngine::objects::square square0(0.1f, -1, 0, false);
 
 	// Game loop
 	while (!window.closed()) {
 		// Creates black background (other colors will be implemented in renderer)
 		window.clear();
-		// Remders a triangle in buffer
-		mainFunctions::renderTriangle(0.0f, 0.0f);
+
+		// Renders square0
+		square0.render();
+
+		// Translates square0
+		square0.translate(0.00001f, 0.0f);
 
 		// Resizes window [Currently not working]
 		window.resize(NULL, NULL, NULL); // Will be removed once resize callback is implemented
@@ -36,6 +36,8 @@ int main() {
 	}
 	// Destroyes window
 	window.~Window();
+
+	printf("\n");
 
 	printf("The core engine has shut down successfully.\n\n");
 
