@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -144,11 +144,17 @@
   <ItemGroup>
     <ClCompile Include="basicShapes.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mapFileHandler.cpp" />
+    <ClCompile Include="sushiScriptInterpreter.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basicShapes.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="mapFileHandler.h" />
+    <ClInclude Include="objects.h" />
     <ClInclude Include="render.h" />
+    <ClInclude Include="sushiScriptInterpreter.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

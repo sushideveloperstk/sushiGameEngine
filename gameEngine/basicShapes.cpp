@@ -2,11 +2,12 @@
 
 namespace sushiEngine {
 	namespace objects {
-		square::square(float scale, float x_pos, float y_pos, bool hasCollision) {
+		square::square(int id, float scale, float x_pos, float y_pos, bool hasCollision) {
+			m_id = id;
 			m_scale = scale; m_x_pos = x_pos;
 			m_y_pos = y_pos;
 			m_hasCollision = hasCollision;
-			printf("Object 'square' has been created.\n");
+			printf("Object 'square' has been created. (%i)\n", m_id);
 		}
 		void square::render() {
 			glTranslatef(m_x_pos, m_y_pos, 0.0f);

@@ -19,6 +19,9 @@
     <Filter Include="Source Files\objects">
       <UniqueIdentifier>{9bdd2e48-e798-4034-9cc8-419a94603cbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\filesystem">
+      <UniqueIdentifier>{9bc40232-1e0b-4aea-8e20-f5da13100672}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,6 +33,12 @@
     <ClCompile Include="basicShapes.cpp">
       <Filter>Source Files\objects</Filter>
     </ClCompile>
+    <ClCompile Include="mapFileHandler.cpp">
+      <Filter>Source Files\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="sushiScriptInterpreter.cpp">
+      <Filter>Source Files\filesystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
@@ -40,6 +49,18 @@
     </ClInclude>
     <ClInclude Include="basicShapes.h">
       <Filter>Source Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="mapFileHandler.h">
+      <Filter>Source Files\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="objects.h">
+      <Filter>Source Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="sushiScriptInterpreter.h">
+      <Filter>Source Files\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
