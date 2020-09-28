@@ -15,6 +15,19 @@ namespace mainFunctions {
 
 #include "main.h"
 
+std::string* objectTable[10000];
+void* objectClass[10000]; // Supposed to be cast to whatever class an object is
+
+void** getObjectClass(int id) {
+	return &objectClass[id];
+}
+std::string** getObjectTable(int id) {
+	return &objectTable[id];
+}
+
+int retVal = 0;
+int idVal = 0;
+
 int main() {
 	printf("Make sure the main map and script file is within C:\SushiEngine\Map.. (main.sem, main.ses)\n");
 	system("pause");
@@ -24,26 +37,26 @@ int main() {
 	printf("Sushi Game engine Start:\n\n");
 	
 	// Inits the window, and sets the initial resoulution
-	sushiEngine::graphics::Window window("Translating Square Example - Sushi Engine", 800, 600);
+	sushiEngine::graphics::Window window("Object System and Scripting Example - Sushi Engine", 800, 600);
 
 	// Loads a map
-	sushiEngine::filesystem::mapFileHandler mainMap("main.sem");
-	int mainMapReturn = mainMap.loadMap();
+	sushiEngine::filesystem::mapFileHandler mainMap("testMap.sem");
+	retVal = mainMap.loadMap();
+	if (retVal == 1) {
+		printf("Failed to read map file.\n");
+	}
+	mainMap.closeMap();
 
 	// Inits Sushi Script Interpreter
 	sushiEngine::filesystem::scriptInterpreter sushiScript;
 
-	if (mainMapReturn == 1) {
-		printf("Error loading the map, file read failed...\n");
-	}
-	else if (mainMapReturn == 2) {
-		printf("Error loading the map, invalid argument...\n");
-	}
-
 	// Game loop
 	while (!window.closed()) {
 		// Creates black background (other colors will be implemented in renderer)
-		window.clear();
+		// window.clear(); - Removed for demonstration of object system (you cant see the squares)
+
+		// This constantly opens and closes the script, causing performance issues.
+		sushiScript.loopScript("testMap.ses");
 
 		// Resizes window [Currently not working]
 		window.resize(NULL, NULL, NULL); // Will be removed once resize callback is implemented

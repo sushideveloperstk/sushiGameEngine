@@ -11,10 +11,13 @@ namespace sushiEngine {
 		private:
 			std::string m_fileName;
 			std::string m_mapName;
+			std::ifstream* m_inFile;
+			int m_id;
 			void* objClass;
 		public:
-			mapFileHandler(std::string fileName, void* objClass[], void* objTable[]);
+			mapFileHandler(std::string fileName);
 			int loadMap();
+			void closeMap();
 			void destroy();
 			std::string getMapName();
 

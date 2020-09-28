@@ -5,6 +5,8 @@
 namespace sushiEngine {
 	namespace filesystem {
 		scriptInterpreter::scriptInterpreter(){
+			m_isFinished = false;
+			m_firstLoop = true;
 			std::cout << "Sushi Script initialized." << std::endl;
 		}
 		int scriptInterpreter::execScript(std::string file) {
@@ -34,7 +36,7 @@ namespace sushiEngine {
 				inFile >> objID >> command;
 
 				if (command == "renderSquare") {
-					sushiEngine::objects::square* workingObject = (sushiEngine::objects::square*)&objectClass[objID];
+					sushiEngine::objects::square* workingObject = (sushiEngine::objects::square*)*getObjectClass(objID);
 					workingObject->render();
 				}
 			}
@@ -48,7 +50,12 @@ namespace sushiEngine {
 			2 = invalid object
 			3 = invalid argument
 			*/
-			std::cout << "Looping script file: " << file << std::endl;
+			
+			if (m_firstLoop == true) {
+				std::cout << "Looping script file: " << file << std::endl;
+			}
+
+			m_firstLoop = false;
 
 			std::ifstream inFile;
 			inFile.open(file);
@@ -65,7 +72,7 @@ namespace sushiEngine {
 				inFile >> objID >> command;
 
 				if (command == "renderSquare") {
-					sushiEngine::objects::square* workingObject = (sushiEngine::objects::square*) & objectClass[objID];
+					sushiEngine::objects::square* workingObject = (sushiEngine::objects::square*)*getObjectClass(objID);
 					workingObject->render();
 				}
 			}
